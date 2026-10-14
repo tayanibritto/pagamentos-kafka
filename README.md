@@ -156,6 +156,16 @@ O evento publicado no Kafka contém apenas as informações necessárias para os
 
 Dados sensíveis informados na API, como número completo do cartão, data de expiração e CVV, não são enviados para o Kafka. Apenas os quatro últimos dígitos do cartão são publicados, reduzindo a exposição de informações sensíveis e seguindo as boas práticas de segurança.
 
+## Persistência de Dados
+
+O ambiente utiliza volumes nomeados para garantir a persistência dos dados do Kafka e do ZooKeeper. Os tópicos e as mensagens permanecerão disponíveis mesmo após a recriação dos containers.
+
+Os volumes configurados são:
+
+- kafka_data: Para guardar tópicos criados e mensagens publicadas.
+- zookeeper_data: Para guardar metadados e estado do ZooKeeper.
+- zookeeper_log: Para guardar registro das transações. Exemplo: criação de tópico, alteração de configuração, registro de broker.
+
 ## Evidência
 
 Requisição 200:

@@ -11,6 +11,10 @@ services:
     ports:
       - "2181:2181"
 
+    volumes:
+      - zookeeper_data:/var/lib/zookeeper/data
+      - zookeeper_log:/var/lib/zookeeper/log
+
   kafka:
     image: confluentinc/cp-kafka:7.6.1
     container_name: kafka
@@ -29,6 +33,9 @@ services:
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+    volumes:
+      - kafka_data:/var/lib/kafka/data
 
   kafka-ui:
     image: provectuslabs/kafka-ui:latest
@@ -59,3 +66,8 @@ services:
 
     env_file:
       - .env
+
+volumes:
+  zookeeper_data:
+  zookeeper_log:
+  kafka_data:
