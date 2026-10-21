@@ -182,8 +182,10 @@ O tópico `payments` pode ser visualizado no Kafka UI e contém os eventos produ
 
 ![Página da Mensagem - Kafka UI](public/mensagem_pagamento.png)
 
-## Observação
+## Observações
 
-O projeto foi desenvolvido e validado utilizando Podman e Podman Compose no Windows 11. Embora o docker-compose seja compatível com a configuração utilizada, a execução oficial deste projeto foi realizada com Podman.
+1. O projeto foi desenvolvido e validado utilizando Podman e Podman Compose no Windows 11. Embora o docker-compose seja compatível com a configuração utilizada, a execução oficial deste projeto foi realizada com Podman.
+
+2. Durante a adaptação para Kubernetes, o Kafka Producer foi ajustado para ser criado sob demanda, evitando dependência da disponibilidade do broker Kafka durante a inicialização da aplicação.
 
 
